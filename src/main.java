@@ -7,11 +7,11 @@ public class main {
         s[1] = new Book("conan", "canh", 40000, 6, 120);
         s[2] = new Book("naruto", "n.anh", 60000, 4, 110);
         s[3] = new Book("tony BS", "tony", 90000, 7, 90);
-        s[4] = new Book("Tren duong bang", "tony", 700000, 9, 160);
+        s[4] = new Book("Tren duong bang", "tony", 70000, 9, 160);
         int sum1 = getSumNumber(s);
         System.out.println("thu vien co " + sum1 + " cuon sach");
-        String h = searchBook(s);
-        System.out.println(h);
+        String tuKhoa = searchBook(s);
+        System.out.println(tuKhoa);
     }
 
     public static int getSumNumber(Book[] books){
@@ -37,18 +37,22 @@ public class main {
     }
     public static String searchBook(Book[] books){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("nhap ten cuon sach ban muon tim" );
+        System.out.println("nhap ten cuon sach ban muon tim: " );
         String ten = scanner.nextLine();
         String k = "";
+        int index = -1;
         for (int i = 0; i < books.length; i++) {
-            if(books[i].getName() == ten){
-                k = "cuon sach "+books[i].getName()+" tac gia la "+books[i].getAuthor()+" co gia "+books[i].getPrice();
-            } else {
-                k = "cuon sach ban tim khong co trong thu vien";
+            if (ten.equals(books[i].getName())) {
+                index = i;
+                break;
             }
         }
+            if (index == -1){
+            k = "cuon sach ban tim khong co trong thu vien";
+            } else{
+                k = "cuon sach "+books[index].getName()+" tac gia la "+books[index].getAuthor()+" co gia "+books[index].getPrice();
+            }
+
         return k;
     }
-
-
 }
